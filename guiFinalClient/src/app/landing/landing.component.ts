@@ -5,12 +5,20 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
+/*
+interface data {
+  id: number;
+  name: string;
+  date: string;
+  location: string;
+}
+  */
 export class LandingComponent implements OnInit{
   async getData () {
     try {
-      const response = await fetch('http://localhost:5193/events');
+      const response = await fetch('https://gui230.jitdesigns.com/api/User');
       const data = await response.json();
-      console.log(data);
+      console.log(JSON.parse(data));
     } catch (error: any) { //cors issues
       console.error(error);
     }
