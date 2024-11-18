@@ -1,3 +1,7 @@
+//we do not need this anymore because CORS has been enabled, but i will keep it around for testing purposes and learning C#'
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
