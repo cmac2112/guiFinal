@@ -1,6 +1,11 @@
-<header>
-    <!-- Your header content here -->
-    <h1>Header</h1>
+<header class="header-container">
+    <div class="title-container">
+    <h1 class="title" *ngIf="title">{{title}}</h1>
+    </div>
+    <div class="button-container">
+    <button class="button" routerLink="/login">Login</button>
+    <button class="button" routerLink="/register">Register</button>
+    </div>
   </header>
   
   <main>
@@ -8,6 +13,6 @@
   </main>
   
   <footer>
-    <!-- Your footer content here -->
+
     <p>Footer</p>
   </footer>
