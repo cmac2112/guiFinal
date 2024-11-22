@@ -1,0 +1,22 @@
+<app-layout [title]="'Register'">
+    <div class="register-container">
+      <form class="form-container" (ngSubmit)="onSubmit()">
+        <label class="register-label" for="firstName">First Name</label>
+        <input class="register-label" type="text" id="firstName" [(ngModel)]="firstName" name="firstName" />
+  
+        <label class="register-label" for="lastName">Last Name</label>
+        <input type="text" id="lastName" [(ngModel)]="lastName" name="lastName" />
+  
+        <label class="register-label" for="email">Email</label>
+        <input type="email" id="email" [(ngModel)]="email" name="email" />
+
+        <label class="register-label" for="password">Password</label>
+        <input type="password" id="password" [(ngModel)]="password" name="password" />
+
+        <label class="register-label" for="confirmPassword">Confirm Password</label>
+        <input required type="password" id="confirmPassword" [(ngModel)]="passwordConfirm" name="confirmPassword" />
+  
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </app-layout>

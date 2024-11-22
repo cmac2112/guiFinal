@@ -11,7 +11,6 @@
     padding: 5px;
     padding-left: 1rem;
     font-family: Arial, Helvetica, sans-serif;
-    
 }
 .button-container{
     display: flex;
@@ -27,4 +26,36 @@
     font-weight: bold;
     border: none;
     cursor: pointer;
+}
+.footer-container{
+    display: flex;
+    justify-content: space-evenly;
+    background: white;
+}
+footer{
+    padding-top: 10px;
+}
+
+.footer-titles{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    color: #240e51;
+}
+.navigation{
+    display: flex;
+    flex-direction: column;
+}
+.route{
+    padding-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #240e51;
+}
+.route:hover{
+    color:brown;
+}
+.footer1{
+    padding-inline: 10px;
+}
+.contact{
+    font-family: Arial, Helvetica, sans-serif;
 }
