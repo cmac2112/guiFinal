@@ -1,7 +1,13 @@
-<form (ngSubmit)="onSubmit($event)">
-    <label for="username">Username</label>
-    <input type="text" placeholder="Username" name="username" [(ngModel)]="username">
-    <label for="password">Password</label>
-    <input type="password" placeholder="Password" name="password" [(ngModel)]="password">
-    <button (click)="login()">Login</button>
-</form>
+<app-layout [title]="'Login'">
+    <div class="login-container">
+        <form class="form-container" (ngSubmit)="login()">
+            <label class="register-label" for="username">Username</label>
+            <input type="text" id="username" [(ngModel)]="username" name="username" />
+    
+            <label class="register-label" for="password">Password</label>
+            <input type="password" id="password" [(ngModel)]="password" name="password" />
+
+            <button type="submit">Log In</button>
+          </form>
+    </div>
+</app-layout>

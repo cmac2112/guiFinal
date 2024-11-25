@@ -10,6 +10,7 @@ export class RegisterComponent {
   firstName: string = '';
   lastName: string = '';
   email: string = '';
+  username: string = '';
   password: string = '';
   passwordConfirm: string = '';
   

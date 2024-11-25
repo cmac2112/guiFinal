@@ -1,0 +1,28 @@
+app-layout{
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+.register-label{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10vh;
+    margin-top: 10vh;
+}

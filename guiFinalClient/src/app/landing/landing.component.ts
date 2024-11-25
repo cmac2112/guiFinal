@@ -6,14 +6,7 @@ import { LoggedInService } from '../logged-in.service'; //import the service so 
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
-/*
-interface data {
-  id: number;
-  name: string;
-  date: string;
-  location: string;
-}
-  */
+
 export class LandingComponent implements OnInit{
   //define the service
   loggedInService: LoggedInService = inject(LoggedInService);
@@ -24,25 +17,23 @@ export class LandingComponent implements OnInit{
   //test the service
   constructor() {
     this.isLoggedIn = this.loggedInService.getLoggedIn();
+    this.fetchUsers();
     //this.test = this.loggedInService.anotherTestFunction(this.word);
     console.log('test function output: ' + this.test);
 
     console.log('Logged in: ' + this.isLoggedIn);
-    console.log('Logged in: ' + this.isLoggedIn);
-    console.log('Logged in: ' + this.isLoggedIn);
-    console.log('Logged in: ' + this.isLoggedIn);
   }
-  async getData () {
+
+  async fetchUsers() {
     try {
-      const response = await fetch('https://gui230.jitdesigns.com/api/User');
-      const data = await response.json();
-      console.log(JSON.parse(data));
-    } catch (error: any) { //cors issues
-      console.error(error);
+      const users = await this.loggedInService.getUsers();
+      console.log(users);
+    } catch (error: any) {
+      console.error('Error fetching users:', error);
     }
   }
   ngOnInit(): void {
-    this.getData(); 
+    
   }
   
 }

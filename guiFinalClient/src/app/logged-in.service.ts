@@ -8,8 +8,23 @@ import { Injectable } from '@angular/core';
 export class LoggedInService {
 
   constructor() { }
-
+  private users = [];
   protected isLoggedIn = false;
+
+  private url = "https://gui230.jitdesigns.com/api/User"
+
+  async getUsers(){
+    try{
+      const response = await fetch(this.url);
+      const data = await response.json();
+      console.log(data);
+      this.users = data;
+      console.log(this.users);
+    }catch(error){
+      console.log(error);
+
+    }
+  }
 
 
   userLogin(username: string, password: string){
