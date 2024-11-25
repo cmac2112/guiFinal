@@ -1,13 +1,36 @@
-<header>
-    <!-- Your header content here -->
-    <h1>Header</h1>
-  </header>
-  
-  <main>
-    <ng-content></ng-content>
-  </main>
-  
-  <footer>
-    <!-- Your footer content here -->
-    <p>Footer</p>
-  </footer>
+<header class="header-container">
+  <div class="title-container">
+    <h1 class="title" *ngIf="title">{{ title }}</h1>
+  </div>
+  <div class="button-container">
+    <button class="button" routerLink="/login">Login</button>
+    <button class="button" routerLink="/register">Register</button>
+  </div>
+</header>
+
+<main>
+  <ng-content></ng-content>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer1">
+      <h2 class="footer-titles">Navigation</h2>
+      <div class="navigation">
+        <a class="route" routerLink="/login">Login</a>
+        <a class="route" routerLink="/register">Register</a>
+        <a class="route" routerLink="//">Home</a>
+        <a class="route" routerLink="/dashboard">Dashboard</a>
+        <a class="route" routerLink="/profile">Profile</a>
+      </div>
+    </div>
+    <div class="footer2">
+      <h2 class="footer-titles">Contact Us</h2>
+      <div class="contact">
+        <p>Phone: 123-456-7890</p>
+        <p>Email: cadenamcarthur&#64;bethelks.edu
+          </p>
+          </div>
+    </div>
+  </div>
+</footer>

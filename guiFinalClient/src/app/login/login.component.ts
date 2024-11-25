@@ -13,9 +13,5 @@ export class LoginComponent {
     console.log(this.username)
     console.log(this.password)
   }
-  onSubmit(e: Event){
-    console.log('Submit');
-    console.log(e);
-  }
 
 }
