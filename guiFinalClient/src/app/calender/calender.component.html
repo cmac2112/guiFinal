@@ -1,3 +1,27 @@
-<div>
-    <p>calender works!</p>
+<div class="calendar-container">
+    <div class="calendar">
+        <div class="calendar-headline">
+            <div class="calendar-headline-month">
+                {{ firstDayOfActiveMonth().monthShort }},
+                {{ firstDayOfActiveMonth().year }}
+            </div>
+            <div class="calendar-headline-controls">
+                <div class="calendar-headline-control" (click)="goToPreviousMonth()">«</div>
+                <div class="calendar-headline-control calendar-headline-control-today" (click)="goToToday()">
+                  Today
+                </div>
+                <div class="calendar-headline-control" (click)="goToNextMonth()">»</div>
+            </div>
+        </div>
+        <div class="calendar-weeks-grid" *ngFor="let weekDay of weekDays(); let i = index">
+            <div class="calendar-weeks-grid-cell">
+                {{ weekDay }}
+            </div>
+        </div>
+        <div class="calendar-grid" *ngFor="let dayOfMonth of daysOfMonth(); let i = index">
+            <div>
+                {{ dayOfMonth.day }}
+            </div>
+        </div>
+    </div>
 </div>

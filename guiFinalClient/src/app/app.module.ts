@@ -11,6 +11,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { RegisterComponent } from './register/register.component';
 import { CalenderComponent } from './calender/calender.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
