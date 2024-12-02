@@ -30,7 +30,7 @@
 .footer-container{
     display: flex;
     justify-content: space-evenly;
-    background: white;
+    background: #d5d5d5;
 }
 footer{
     padding-top: 10px;

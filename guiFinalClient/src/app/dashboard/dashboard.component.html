@@ -1,11 +1,19 @@
 <app-layout [title]="'Dashboard'">
-    <div>
-        <h1>Welcome to the Dashboard</h1>
-        <p>//get events
-            //allow user to create events
-            //allow user to join events
-            //allow user to leave events
-            </p>
-        
+  <div>
+    <div class="title">
+      <h1>Event Dashboard</h1>
     </div>
+    <div class="events-container">
+      <div *ngFor="let event of events" class="event-item">
+        <p>
+          <span class="event-title">{{ event.event_name }}</span> -
+          {{ event.description }} - {{ event.location }}
+        </p>
+        <p>
+            <span class="event-date">{{ formatDate(event.start_time)}}</span> -
+            {{ formatDate(event.end_time)}}
+        </p>
+      </div>
+    </div>
+  </div>
 </app-layout>
