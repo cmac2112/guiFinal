@@ -15,6 +15,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./calender.component.css']
 })
 export class CalenderComponent {
+  meetings: { [key: string]: string[] } = {
+    '2024-12-12': ['Wakeup', 'code', 'sleep'],
+    '2024-12-13': ['Wakeup', 'dont code', 'sleep'],
+  };  
+
   today: Signal<DateTime> = signal(DateTime.local());
   firstDayOfActiveMonth: WritableSignal<DateTime> = signal(
     this.today().startOf('month'),
@@ -49,5 +54,22 @@ export class CalenderComponent {
   goToToday(): void {
     this.firstDayOfActiveMonth.set(this.today().startOf('month'));
   }
+  DATE_MED = DateTime.DATE_MED;
+
+  activeDayMeetings: Signal<string[]> = computed(() => {
+    const activeDay = this.activeDay();
+    if (activeDay === null) {
+      return [];
+    }
+    const activeDayISO = activeDay.toISODate();
+  
+    if (!activeDayISO) {
+      return [];
+    }
+  
+    // Correctly access the meetings object
+    return this.meetings[activeDayISO] ?? [];
+  });
 }
 //10:40
+// get events from here https://gui230.jitdesigns.com/api/events

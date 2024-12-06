@@ -18,11 +18,30 @@
         </div>
       </div>
       <div class="calendar-grid">
-        <div class="calendar-grid-cell" *ngFor="let dayOfMonth of daysOfMonth()">
+        <div class="calendar-grid-cell" (click)="activeDay.set(dayOfMonth)" 
+        *ngFor="let dayOfMonth of daysOfMonth()">
             <div>
                 {{ dayOfMonth.day }}
             </div>
         </div>
       </div>
     </div>
+    <div class="schedule">
+      <div class="schedule-headline">
+        <div *ngIf="activeDay(); else noDaySelected">
+          {{ activeDay()!.toLocaleString(DATE_MED) }}
+        </div>
+        <ng-template #noDaySelected>
+          <div>Please select a day</div>
+        </ng-template>
+      </div>
+      <div *ngIf="activeDay() && activeDayMeetings().length === 0; else haveEvent">
+        <div>No planned events</div>
+      </div>
+      <ng-template #haveEvent>
+        <div *ngFor="let meeting of activeDayMeetings()">{{meeting}}</div>
+      </ng-template>
+    </div>
+    
+    
   </div>
