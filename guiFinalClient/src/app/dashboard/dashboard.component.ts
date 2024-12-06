@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LoggedInService } from '../logged-in.service';
 export interface Event{
   id: number;
   event_name: string;
@@ -18,6 +18,9 @@ export interface Event{
 })
 
 export class DashboardComponent implements OnInit {
+  constructor(private loggedInService: LoggedInService) {
+    console.log('logged in: ' + this.loggedInService.getLoggedIn());
+  }
   //get events
   //allow user to create events
   //allow user to join events
@@ -25,8 +28,10 @@ export class DashboardComponent implements OnInit {
   events: Event[] = [];
   ngOnInit() {
     //get events
-    this.getEvents();
+    if(this.loggedInService.getLoggedIn()){
+      this.getEvents();
   }
+}
   async getEvents() {
     //get events
     const response = await fetch(`https://gui230.jitdesigns.com/api/events`);

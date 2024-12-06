@@ -17,14 +17,14 @@ export class LandingComponent implements OnInit{
   //test the service
   constructor() {
     this.isLoggedIn = this.loggedInService.getLoggedIn();
-    this.fetchUsers();
+    this.getUsers();
     //this.test = this.loggedInService.anotherTestFunction(this.word);
     console.log('test function output: ' + this.test);
 
     console.log('Logged in: ' + this.isLoggedIn);
   }
 
-  async fetchUsers() {
+  async getUsers() {
     try {
       const users = await this.loggedInService.getUsers();
       console.log(users);
@@ -32,6 +32,7 @@ export class LandingComponent implements OnInit{
       console.error('Error fetching users:', error);
     }
   }
+
   ngOnInit(): void {
     
   }

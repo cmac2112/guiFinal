@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoggedInService } from '../logged-in.service';
 
 @Component({
   selector: 'app-register',
@@ -6,7 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor() { }
+  constructor(private loggedInService: LoggedInService) {
+    this.loggedInService.userRegister(this.firstName, this.lastName, this.email, this.username, this.password);
+   }
   firstName: string = '';
   lastName: string = '';
   email: string = '';
@@ -18,6 +21,7 @@ export class RegisterComponent {
   ngOnInit(): void {
   }
   onSubmit() {
-    console.log('test submit')
+    this.loggedInService.userRegister(this.firstName, this.lastName, this.email, this.username, this.password);
+    console.log(this.loggedInService.getLoggedIn());
   }
 }

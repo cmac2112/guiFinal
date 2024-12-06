@@ -26,3 +26,8 @@ app-layout{
     margin-bottom: 10vh;
     margin-top: 10vh;
 }
+.error{
+    font-family: Arial, Helvetica, sans-serif;
+    color: red;
+
+}
