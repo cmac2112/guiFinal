@@ -9,6 +9,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { RegisterComponent } from './register/register.component';
+import { CalenderComponent } from './calender/calender.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -18,12 +22,14 @@ import { RegisterComponent } from './register/register.component';
     DashboardComponent,
     LoginComponent,
     LayoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    CalenderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
