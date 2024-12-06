@@ -39,7 +39,16 @@
         <div>No planned events</div>
       </div>
       <ng-template #haveEvent>
-        <div *ngFor="let meeting of activeDayMeetings()">{{meeting}}</div>
+        <div *ngFor="let meeting of activeDayMeetings(); let i = index">
+          <div *ngIf="meeting === 'divider'">
+            <!-- Empty space between events -->
+            <div class="divider"></div>
+          </div>
+          <div *ngIf="meeting !== 'divider'">
+            {{ meeting }}
+          </div>
+        </div>
       </ng-template>
     </div>
+    
   </div>

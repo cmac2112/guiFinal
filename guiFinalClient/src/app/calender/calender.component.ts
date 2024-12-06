@@ -74,24 +74,48 @@ export class CalenderComponent {
 
   getEvents(): void {
     const url = 'https://gui230.jitdesigns.com/api/events';
-
+  
     this.http.get<any[]>(url).subscribe({
       next: (data) => {
         data.forEach((event) => {
           const dateKey = DateTime.fromISO(event.start_time).toISODate();
-
+  
           if (dateKey) {
+            // Convert start and end times to local timezone and remove seconds and milliseconds
+            const startTime = DateTime.fromISO(event.start_time)
+              .setZone('local')  // Ensure it is in local timezone
+              .toLocaleString({ 
+                weekday: 'short', 
+                month: 'short', 
+                day: 'numeric', 
+                hour: 'numeric', 
+                minute: 'numeric' 
+              });
+  
+            const endTime = DateTime.fromISO(event.end_time)
+              .setZone('local')  // Ensure it is in local timezone
+              .toLocaleString({ 
+                weekday: 'short', 
+                month: 'short', 
+                day: 'numeric', 
+                hour: 'numeric', 
+                minute: 'numeric' 
+              });
+  
+            // Check if the dateKey already exists, and if not, create an empty array
             if (!this.meetings[dateKey]) {
               this.meetings[dateKey] = [];
             }
-            
+  
+            // Push event details with the formatted times and a "divider" for spacing between events
             this.meetings[dateKey].push(
-              event.event_name,
-              event.description,
-              event.location,
-              event.start_time,
-              event.end_time,
-              event.created_by
+              `Event Name: ${event.event_name}`,
+              `Description: ${event.description}`,
+              `Location: ${event.location}`,
+              `Start Time: ${startTime}`,
+              `End Time: ${endTime}`,
+              `Created By: ${event.created_by}`,
+              "divider" // Special marker for empty space
             );
           }
         });
@@ -100,5 +124,5 @@ export class CalenderComponent {
         console.error('Error fetching events:', err);
       },
     });
-  }
+  }  
 }

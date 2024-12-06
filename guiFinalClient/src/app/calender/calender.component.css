@@ -92,3 +92,6 @@
   font-weight: 600;
   margin-bottom: 30px;
 }
+.divider {
+  height: 10px; /* Adjust the height as needed */
+}
