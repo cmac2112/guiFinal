@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { DateTime, Info, Interval } from 'luxon';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-calender',
@@ -15,10 +16,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./calender.component.css']
 })
 export class CalenderComponent {
-  meetings: { [key: string]: string[] } = {
-    '2024-12-12': ['Wakeup', 'code', 'sleep'],
-    '2024-12-13': ['Wakeup', 'dont code', 'sleep'],
-  };  
+  meetings: { [key: string]: string[] } = {};  
 
   today: Signal<DateTime> = signal(DateTime.local());
   firstDayOfActiveMonth: WritableSignal<DateTime> = signal(
@@ -57,6 +55,7 @@ export class CalenderComponent {
   DATE_MED = DateTime.DATE_MED;
 
   activeDayMeetings: Signal<string[]> = computed(() => {
+    this.getEvents();
     const activeDay = this.activeDay();
     if (activeDay === null) {
       return [];
@@ -70,6 +69,36 @@ export class CalenderComponent {
     // Correctly access the meetings object
     return this.meetings[activeDayISO] ?? [];
   });
+
+  constructor(private http: HttpClient) {}
+
+  getEvents(): void {
+    const url = 'https://gui230.jitdesigns.com/api/events';
+
+    this.http.get<any[]>(url).subscribe({
+      next: (data) => {
+        data.forEach((event) => {
+          const dateKey = DateTime.fromISO(event.start_time).toISODate();
+
+          if (dateKey) {
+            if (!this.meetings[dateKey]) {
+              this.meetings[dateKey] = [];
+            }
+            
+            this.meetings[dateKey].push(
+              event.event_name,
+              event.description,
+              event.location,
+              event.start_time,
+              event.end_time,
+              event.created_by
+            );
+          }
+        });
+      },
+      error: (err) => {
+        console.error('Error fetching events:', err);
+      },
+    });
+  }
 }
-//10:40
-// get events from here https://gui230.jitdesigns.com/api/events

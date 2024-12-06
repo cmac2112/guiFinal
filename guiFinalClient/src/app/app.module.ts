@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { RegisterComponent } from './register/register.component';
 import { CalenderComponent } from './calender/calender.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -22,12 +23,13 @@ import { CalenderComponent } from './calender/calender.component';
     LoginComponent,
     LayoutComponent,
     RegisterComponent,
-    CalenderComponent
+    CalenderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
