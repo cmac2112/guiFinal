@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 // this is the service that will provide logged in state to our components
 // if a user is not logged in or registered,they cannot access anything past the landing page
@@ -9,13 +10,14 @@ interface User{
   first_name: string;
   last_name: string;
   role: string;
+  user_id?: number;
 }
 @Injectable({
   providedIn: 'root'
 })
 export class LoggedInService {
 
-  constructor() { }
+  constructor(private router: Router) { }
   private users: User[] = [];
   public isLoggedIn = false;
   public currentUser: User = {} as User;
@@ -44,6 +46,7 @@ export class LoggedInService {
         this.isLoggedIn = true;
         console.log('logged in')
         console.log('this.logged in = ' + this.isLoggedIn)
+        this.currentUser = this.users[i];
         return;
       }else{
         console.log('not logged in')
@@ -71,6 +74,7 @@ export class LoggedInService {
     this.users.push(newUser)
     console.log('user registered')
     console.log(this.users)
+
   }
   userLogout(){
     this.isLoggedIn = false;
@@ -78,5 +82,11 @@ export class LoggedInService {
   getLoggedIn(){
     console.log('getloggedin ran')
     return this.isLoggedIn;
+  }
+  getCurrentUserId(){
+    return this.currentUser ? this.currentUser.user_id : null;
+  }
+  getCurrentUser(){
+    return this.currentUser;
   }
 }

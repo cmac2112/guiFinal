@@ -16,7 +16,6 @@ export class RegisterComponent {
   username: string = '';
   password: string = '';
   passwordConfirm: string = '';
-  
 
   ngOnInit(): void {
   }

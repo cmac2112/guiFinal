@@ -1,0 +1,26 @@
+.profile-container{
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif
+}
+.events-container{
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif
+}
+.events-list{
+    background-color: grey;
+    width: 60%;
+    justify-self: center;
+    overflow-y: auto;
+    max-height: 500px;
+}
+.event-title{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.event-item{
+    display: flex;
+    background-color: white;
+    margin-bottom: 3px;
+    justify-content: space-between;
+}

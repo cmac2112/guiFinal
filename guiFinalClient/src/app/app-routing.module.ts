@@ -9,7 +9,7 @@ import { CalenderComponent } from './calender/calender.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent },
-  {path: 'profile', component: ProfileComponent},
+  {path: 'profile/:id', component: ProfileComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},

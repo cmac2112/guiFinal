@@ -1,1 +1,29 @@
-<p>profile works!</p>
+<app-layout>
+    <div class="profile-page">
+    <div *ngIf="user" class="profile-container">
+        <h1>Your Profile, Hello {{ user.username }}</h1>
+        <p>First Name: {{ user.first_name }}</p>
+        <p>Last Name: {{ user.last_name }}</p>
+        <p>Role: {{ user.role }}</p>
+        <p>User ID: {{ user.user_id }}</p>
+      </div>
+        <div *ngIf="userEvents" class="events-container">
+            <h1>Your Events</h1>
+            <p>Here are the events you have registered:</p>
+            </div>
+      <div class="events-list">
+        
+        <div *ngFor="let event of userEvents" class="event-item">
+            <p>
+              <span class="event-title">{{ event.event_name }}</span> -
+              {{ event.description }} - {{ event.location }} - {{ event.event_id}}
+            </p>
+            <p>
+                <span class="event-date">{{ formatDate(event.start_time)}}</span> -
+                {{ formatDate(event.end_time)}}
+            </p>
+            <button class="delete_button" (click)="deleteRegistration(event.event_id)">Delete</button>
+          </div>
+      </div>
+      </div>
+</app-layout>

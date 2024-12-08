@@ -1,19 +1,36 @@
 <app-layout [title]="'Dashboard'">
   <div>
     <div class="title">
-      <h1>Event Dashboard</h1>
+      <h1>Upcoming events</h1>
+      <p [(ngModel)]="error" class="error">{{ error }}</p>
     </div>
+    <div class="dashboard-container">
+      
+      <app-calender></app-calender>
     <div class="events-container">
       <div *ngFor="let event of events" class="event-item">
         <p>
           <span class="event-title">{{ event.event_name }}</span> -
-          {{ event.description }} - {{ event.location }}
+          {{ event.description }} - {{ event.location }} - {{ event.event_id}}
         </p>
         <p>
             <span class="event-date">{{ formatDate(event.start_time)}}</span> -
             {{ formatDate(event.end_time)}}
         </p>
+        <button class="rsvp-button" (click)="RSVP(event.event_id)">RSVP</button>
       </div>
     </div>
+    <div class="add-event">
+      <p>Add your event here</p>
+      <form (ngSubmit)="CreateEvent()" class="add-event-form">
+        <input type="text" placeholder="Event Name" [(ngModel)]="event_name" name="event_name" required>
+        <input type="text" placeholder="Description" [(ngModel)]="description" name="description" required>
+        <input type="text" placeholder="Location" [(ngModel)]="location" name="location" required>
+        <input type="datetime-local" placeholder="Start Time" [(ngModel)]="start_time" name="start_time" required>
+        <input type="datetime-local" placeholder="End Time" [(ngModel)]="end_time" name="end_time" required>
+        <button type="submit">Create Event</button>
+      </form>
+    </div>
+  </div>
   </div>
 </app-layout>
